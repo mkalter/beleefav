@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flynth Voorraad</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+body {
+            background-image: url('https://www.jesusislife.in/wp-content/uploads/2019/05/Savin-NY-Website-Background-Web.jpg');
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333333; /* Dark Gray */
+	            background-attachment: fixed; /* Fixeer de achtergrond om te voorkomen dat deze scrollt */
+            background-size: cover;
+            background-position: bottom;
+}
+
+.container {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2% auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: #007BFF; /* Bright Blue */
+    border-color: #0056b3; /* Darker Blue */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004386;
+}
+
+.btn-success {
+    background-color: #28A745; /* Fresh Green */
+    border-color: #1e7e34;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+    border-color: #155724;
+}
+
+header {
+    background-color: #007BFF; /* Bright Blue */
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FFFFFF; /* White */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00008B; /* Fresh Green */
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+.floating-logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.floating-logo img {
+    width: 150px;
+    height: auto;
+}
+.logout {
+    float: right;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/tv-beheer"><i class="fas fa-tv"></i> TV Schermen voorraad</a></li>
+                <li><a href="/tv-toevoegen"><i class="fas fa-plus-square"></i> TV Scherm toevoegen</a></li>
+                <li><a href="/tv-kiezen"><i class="fas fa-hand-pointer"></i> TV Scherm gebruiken</a></li>
+<li class="logout"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Uitloggen</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="https://www.flynth.nl/Portals/0/Flynth_logo.svg?ver=m2f-ZUmJcYKKep2CzZJIDg%3D%3D"
+                alt="Flynth Logo" style="width: 200px; height: auto;">
+        </div>
+        <div class="floating-logo">
+            <img src="https://i.postimg.cc/QtRQ9HWN/Beleef-AV-344.png" alt="BeleefAV Logo">
+        </div>
+
+        <h1 class="main-heading"><b>Welkom bij de overzichtspagina voor AV-voorraad van Flynth locaties</b></h1>
+
+        <!-- Welkomsttekst -->
+        <p>Dit is de overzichtspagina voor de AV-voorraad van Flynth locaties. Hier kunt u toegang krijgen tot verschillende functies voor het beheer van TV-schermen en uw gebruikersaccount. Klik op de kaarten hieronder om aan de slag te gaan.</p>
+        <!-- Einde Welkomsttekst -->
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://files.oaiusercontent.com/file-2HoM9k7SLudyX0jTlqmaYbTt?se=2023-12-07T16%3A44%3A16Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Dc80ae2f1-8f51-4803-af3a-922419ee5806.webp&sig=TqMDN9lP%2BPAkmiUy8v8YqovmonjpZwtjsgPYCa89ts4%3D"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>TV Schermen voorraad</b></h5>
+                        <p class="card-text">Beheer de TV schermen.</p>
+                        <a href="/tv-beheer" class="btn btn-primary">Ga naar de voorraad</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://files.oaiusercontent.com/file-WJLLRdhWjpdLfzqQxTWLBLyT?se=2023-12-07T16%3A50%3A43Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Dc43020a8-383f-4c01-b630-dfeb0941b220.webp&sig=P9Jb/qzZRBmKMvliyoAP0Cq67Ux6nWGnSeRSZS0ma6I%3D"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>TV Scherm toevoegen</b></h5>
+                        <p class="card-text">Voeg een nieuw TV scherm toe.</p>
+                        <a href="/tv-toevoegen" class="btn btn-success">Voeg een scherm toe</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://files.oaiusercontent.com/file-u3O0OsbKkHOQ36EnMRP77L05?se=2023-12-08T16%3A58%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D6593192a-f2e8-4b63-9951-03ba9830e8ad.webp&sig=LK7jqESLxsy2DcOt3RiIknVd0nLM0Yj2Iy%2BzUR6C4HY%3D"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>TV Scherm gebruiken</b></h5>
+                        <p class="card-text">Kies een scherm uit het overzicht.</p>
+                        <a href="/tv-kiezen" class="btn btn-success">Gebruik een scherm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>
