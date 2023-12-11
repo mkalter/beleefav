@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Beheer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Account Beheer</h1>
+
+        <div class="form-container">
+            <form id="accountForm">
+                <div class="form-group">
+                    <label for="username">Gebruikersnaam:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Wachtwoord:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mailadres:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        // Voeg JavaScript toe om formuliergegevens te verwerken
+        document.addEventListener('DOMContentLoaded', function () {
+            const accountForm = document.getElementById('accountForm');
+
+            accountForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Verwerk de formuliergegevens hier, bijvoorbeeld met behulp van Fetch API naar de server
+                const formData = new FormData(accountForm);
+
+                // Toon de gegevens in de console (vervang dit met de werkelijke servercommunicatie)
+                for (const pair of formData.entries()) {
+                    console.log(`${pair[0]}: ${pair[1]}`);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

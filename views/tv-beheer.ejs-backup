@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TV Scherm Beheer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">TV Scherm Beheer</h1>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 mb-3">
+            <a href="/" class="btn btn-primary">Home</a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Merk</th>
+                        <th>Model</th>
+                        <th>Barcode</th>
+                        <th>Serienummer</th>
+                        <th>Scherm formaat</th>
+                        <th>Herkomst</th>
+                        <th>Staat</th>
+                        <th>Beschikbaarheid</th>
+                        <th>Opmerkingen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% tvData.forEach((tv, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= tv.Merk %></td>
+                            <td><%= tv.Model %></td>
+                            <td><%= tv.Barcode %></td>
+                            <td><%= tv.Serienummer %></td>
+                            <td><%= tv.schermFormaat %></td>
+                            <td><%= tv.Herkomst %></td>
+                            <td><%= tv.Staat %></td>
+                            <td>
+                                <% if (tv.Beschikbaarheid === 'Ja') { %>
+                                    <span style="color: green;">✔</span>
+                                <% } else { %>
+                                    <span style="color: red;">❌</span>
+                                <% } %>
+                            </td>
+                            <td><%= tv.Opmerkingen %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

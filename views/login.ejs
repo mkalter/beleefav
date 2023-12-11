@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://www.pngmagic.com/product_images/website-background-image-size-psd-vector-photo.jpg'); 
+            background-size: cover;
+            background-position: maximize;
+            transition: background-color 0.5s, color 0.5s;
+			            font-family: 'Poppins', sans-serif;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 400px; /* Aangepaste breedte */
+            margin: 5% auto; /* Centreren in de viewport */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Licht transparante achtergrond */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container img {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            display: block; /* Centreren van het logo */
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #f4f4f4; /* Lichtgrijze achtergrond voor de card */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 100%; /* Volledige breedte knop */
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 90%;
+                margin-top: 20%;
+            }
+        }
+				/* CSS voor het zwevende logo zonder achtergrondkleur */
+.floating-logo {
+    position: fixed;
+    bottom: 20px; /* Pas dit aan om de gewenste afstand tot de onderkant van de pagina in te stellen */
+    right: 20px; /* Pas dit aan om de gewenste afstand tot de rechterkant van de pagina in te stellen */
+    z-index: 1000; /* Zorgt ervoor dat het logo bovenop andere elementen zweeft */
+    padding: 10px;
+}
+
+.floating-logo img {
+    width: 150px; /* Pas dit aan om de gewenste breedte van het logo in te stellen */
+    height: auto;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://www.flynth.nl/Portals/0/Flynth_logo.svg?ver=m2f-ZUmJcYKKep2CzZJIDg%3D%3D" alt="Flynth Logo">
+        </div>
+			<div class="floating-logo">
+    <img src="https://i.postimg.cc/QtRQ9HWN/Beleef-AV-344.png" alt="BeleefAV Logo">
+</div>
+        <div class="card">
+            <h2 class="form-title"><b>Login</b></h2>
+            <form method="post" action="/login">
+                <div class="form-group">
+                    <label for="username">Gebruikersnaam:</label>
+                    <input type="text" class="form-control" id="username" name="username" required aria-label="Gebruikersnaam">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Wachtwoord:</label>
+                    <input type="password" class="form-control" id="password" name="password" required aria-label="Wachtwoord">
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" aria-label="Aangemeld blijven">
+                    <label class="form-check-label" for="rememberMe">Aangemeld blijven</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Log in</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

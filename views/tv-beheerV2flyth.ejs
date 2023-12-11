@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Overzicht AV-apparatuur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Andere stylesheet-links hier -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <style>
+        /* Globale stijlen */
+        body {
+            background-image: url('https://i.pinimg.com/originals/4a/94/26/4a94268541d7a0ed95a8be5138e8a288.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+            margin: 20px; /* Voeg margin toe rondom de hele webpagina */
+            padding: 20px; /* Voeg padding toe rondom de hele webpagina */
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 80%; /* Aangepast naar 80% voor een betere leesbaarheid */
+            margin: 2% auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container img {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        table.dataTable {
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        table.dataTable thead th {
+            background-color: #4CAF50; /* Donkergroen */
+            color: white;
+        }
+
+        table.dataTable tbody td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        table.dataTable tbody tr:hover {
+            background-color: #f2f2f2; /* Lichtgrijs voor hover */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .dataTables_wrapper .dataTables_info {
+            display: none; /* Verbergt de 'Showing 1 to ... entries' tekst */
+        }
+
+        /* Aangepaste stijl voor DataTables zoekknop */
+        .dataTables_filter {
+            text-align: right; /* Plaats de zoekknop rechts */
+        }
+
+        .dataTables_filter input[type="search"] {
+            width: 300px; /* Pas de breedte van de zoekknop aan naar jouw voorkeur */
+            padding: 5px 10px; /* Voeg wat padding toe voor stijl */
+            border: 1px solid #ced4da; /* Voeg een rand toe */
+            border-radius: 5px; /* Rond de hoeken af */
+            font-size: 16px; /* Pas de lettergrootte aan */
+            background-color: #ffffff;
+        }
+
+        /* Aangepaste stijl voor de "Zoeken" tekst (optioneel) */
+        .dataTables_filter label {
+            font-weight: bold; /* Maak de tekst vetgedrukt */
+            margin-right: 10px; /* Voeg wat ruimte toe aan de rechterkant van de tekst */
+        }
+
+/* Navigatiemenu-stijlen */
+header {
+    background-color: #007bff; /* Achtergrondkleur van het menu */
+    color: #fff; /* Tekstkleur van het menu */
+    padding: 20px 0; /* Binnenste vulling van het menu */
+    margin-bottom: 50px; /* Verwijder de margin onderaan de header */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 20px; /* Ruimte tussen menu-items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s; /* Voeg een overgangseffect toe voor kleurverandering */
+}
+
+nav ul li a:hover {
+    color: #0056b3; /* Kleur van de link tijdens hover */
+}
+        .filter-group-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        /* Stijlen voor de individuele filtergroepen */
+        .filter-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .filter-group label {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        /* Voeg wat spatiëring toe aan de filters zelf voor een betere uitlijning */
+        .custom-select {
+            width: 100%;
+            padding: 5px 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tv-toevoegen">TV Toevoegen</a></li>
+                <li><a href="/andere-pagina">Andere Pagina</a></li>
+                <!-- Voeg meer menu-items toe zoals nodig -->
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://www.flynth.nl/Portals/0/Flynth_logo.svg?ver=m2f-ZUmJcYKKep2CzZJIDg%3D%3D" alt="Flynth Logo">
+        </div>
+
+        <div class="card">
+            <h1 class="form-title"><b>AV-apparatuur overzicht</b></h1>
+            
+            <p>Dit is een overzicht van de beschikbare AV-apparatuur. Gebruik de filters hieronder om de resultaten te verfijnen.</p>
+            
+            <!-- Filtercontainer voor Merk, Formaat en Beschikbaarheid -->
+            <div class="filter-group-container">
+                <div class="filter-group">
+                    <label for="merkFilter">Filter op merk:</label>
+                    <select id="merkFilter" class="custom-select">
+                        <option value="">Kies een merk</option>
+                        <option value="LG">LG</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Philips">Philips</option>
+                        <option value="Vogels">Vogels</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="formaatFilter">Filter op formaat:</label>
+                    <select id="formaatFilter" class="custom-select">
+                        <option value="">Kies een formaat</option>
+                        <option value="32">32</option>
+                        <option value="43">43</option>
+                        <option value="55">55</option>
+                        <option value="65">65</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="beschikbaarheidFilter">Filter op beschikbaarheid:</label>
+                    <select id="beschikbaarheidFilter" class="custom-select">
+                        <option value="">Kies beschikbaarheid</option>
+                        <option value="Ja">Ja</option>
+                        <option value="Nee">Nee</option>
+                    </select>
+                </div>
+            </div>
+
+<div class="table-responsive" style="overflow-x: hidden;">
+    <table class="table" id="avEquipmentTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Merk</th>
+                            <th>Model</th>
+                            <th>Beschikbaarheid</th>
+                            <th>Barcode</th>
+                            <th>Serienummer</th>
+                            <th>Schermformaat</th>
+                            <th>Herkomst</th>
+                            <th>Staat</th>
+                            <th>Opmerkingen</th>
+                            <th>Locatie Inzet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% tvData.forEach((tv, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= tv.Merk %></td>
+                                <td><%= tv.Model %></td>
+                                <td><%= tv.Beschikbaarheid %></td>
+                                <td><%= tv.Barcode %></td>
+                                <td><%= tv.Serienummer %></td>
+                                <td><%= tv.schermFormaat %></td>
+                                <td><%= tv.Herkomst %></td>
+                                <td><%= tv.Staat %></td>
+                                <td><%= tv.Opmerkingen %></td>
+                                <td><%= tv.LocatieInzet %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script> $(document).ready(function() {
+        var table = $('#avEquipmentTable').DataTable({
+                responsive: true,
+                paging: false,
+                pageLength: 100,
+                language: {
+                    search: "Zoeken", // Hier passen we de tekst aan naar "Zoeken"
+                    // Andere taalaanpassingen hier
+                }
+            });
+
+            // Dropdown filterfunctionaliteit voor Merk
+            $('#merkFilter').on('change', function() {
+                table.column(1).search(this.value).draw(); // Filtert op de kolom 'Merk'
+            });
+
+            // Dropdown filterfunctionaliteit voor Formaat
+            $('#formaatFilter').on('change', function() {
+                table.column(6).search(this.value).draw(); // Filtert op de kolom 'Schermformaat'
+            });
+
+            // Dropdown filterfunctionaliteit voor Beschikbaarheid
+            $('#beschikbaarheidFilter').on('change', function() {
+                table.column(3).search(this.value).draw(); // Filtert op de kolom 'Beschikbaarheid'
+            });
+        });
+    </script>
+</body>
+</html>

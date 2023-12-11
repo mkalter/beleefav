@@ -35,11 +35,6 @@ body {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .btn-primary {
     background-color: #007BFF; /* Bright Blue */
     border-color: #0056b3; /* Darker Blue */
@@ -146,56 +141,85 @@ nav ul li a:hover {
             <img src="https://i.postimg.cc/QtRQ9HWN/Beleef-AV-344.png" alt="BeleefAV Logo">
         </div>
 
-        <h1 class="main-heading"><b>Welkom bij de overzichtspagina voor AV-voorraad van Flynth locaties</b></h1>
+        <h1 class="mb-4"><b>TV scherm kiezen</b></h1>
+		    <p>Kies hier een scherm die uit voorraad moet worden genomen.</p>
 
-        <!-- Welkomsttekst -->
-        <p>Dit is de overzichtspagina voor de AV-voorraad van Flynth locaties. Hier kunt u toegang krijgen tot verschillende functies voor het beheer van TV-schermen en uw gebruikersaccount. Klik op de kaarten hieronder om aan de slag te gaan.</p>
-        <!-- Einde Welkomsttekst -->
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top"
-                        src="https://files.oaiusercontent.com/file-2HoM9k7SLudyX0jTlqmaYbTt?se=2023-12-07T16%3A44%3A16Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Dc80ae2f1-8f51-4803-af3a-922419ee5806.webp&sig=TqMDN9lP%2BPAkmiUy8v8YqovmonjpZwtjsgPYCa89ts4%3D"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>TV Schermen voorraad</b></h5>
-                        <p class="card-text">Beheer de TV schermen.</p>
-                        <a href="/tv-beheer" class="btn btn-primary">Ga naar de voorraad</a>
-                    </div>
-                </div>
+<div class="card form-card">
+        <form action="/choose_tv" method="post">
+            <div class="form-group">
+                <label for="tv-selection">Selecteer TV:</label>
+                <select class="form-control" id="tv-selection" name="tvSelection" required>
+                    <% tvData.forEach(tv => { %>
+                        <option value="<%= `${tv.Merk} - ${tv.Model} - ${tv['Scherm Formaat']} inch - ${tv.Barcode}` %>">
+                            <%= `${tv.Merk} - ${tv.Model} - ${tv['Scherm Formaat']} inch - ${tv.Barcode}` %>
+                        </option>
+                    <% }); %>
+                </select>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top"
-                        src="https://files.oaiusercontent.com/file-WJLLRdhWjpdLfzqQxTWLBLyT?se=2023-12-07T16%3A50%3A43Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Dc43020a8-383f-4c01-b630-dfeb0941b220.webp&sig=P9Jb/qzZRBmKMvliyoAP0Cq67Ux6nWGnSeRSZS0ma6I%3D"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>TV Scherm toevoegen</b></h5>
-                        <p class="card-text">Voeg een nieuw TV scherm toe.</p>
-                        <a href="/tv-toevoegen" class="btn btn-success">Voeg een scherm toe</a>
-                    </div>
-                </div>
+            <!-- Voeg hier de regel voor 'locatie inzet' toe -->
+            <div class="form-group">
+                <label for="locatie-inzet">Locatie inzet:</label>
+                <input type="text" class="form-control" id="locatie-inzet" name="locatieInzet" required>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top"
-                        src="https://files.oaiusercontent.com/file-u3O0OsbKkHOQ36EnMRP77L05?se=2023-12-08T16%3A58%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D6593192a-f2e8-4b63-9951-03ba9830e8ad.webp&sig=LK7jqESLxsy2DcOt3RiIknVd0nLM0Yj2Iy%2BzUR6C4HY%3D"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>TV Scherm gebruiken</b></h5>
-                        <p class="card-text">Kies een scherm uit het overzicht.</p>
-                        <a href="/tv-kiezen" class="btn btn-success">Gebruik een scherm</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <!-- Add hidden input fields for other TV information -->
+            <% tvData.forEach(tv => { %>
+                <input type="hidden" name="merk_<%= tv.Merk %>" value="<%= tv.Merk %>">
+                <input type="hidden" name="schermFormaat_<%= tv.Merk %>" value="<%= tv['Scherm Formaat'] %>">
+            <% }); %>
+					<div style="margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">Kiezen</button>
+			</div>
+			<div id="success-message" class="alert alert-success" style="display: none;">
+    <strong>Succes!</strong> Uw actie is succesvol voltooid.
+</div>
 
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+	    <script>
+        $(document).ready(function () {
+            var table = $('#tvTable').DataTable({
+                paging: false
+            });
+
+            // Add event listener for Beschikbaarheid filter
+            $('#filterBeschikbaarheid').on('change', function () {
+                var filterValue = $(this).val();
+                table.column(8).search(filterValue).draw();
+            });
+
+<script>
+    function showSuccessMessage() {
+        var successMessage = document.getElementById("success-message");
+        successMessage.style.display = "block"; // Toon de melding
+
+        // Verberg de melding na 5 seconden (5000 milliseconden)
+        setTimeout(function () {
+            successMessage.style.display = "none"; // Verberg de melding
+        }, 5000);
+    }
+
+    // Voeg deze functie toe aan uw formulierverwerking of andere actie
+    function handleFormSubmission(event) {
+        event.preventDefault(); // Voorkom het standaardgedrag van het formulier
+
+        // Voer hier de actie uit, bijvoorbeeld het indienen van het formulier
+
+        // Na een succesvolle actie, roep de functie aan om de succesmelding weer te geven
+        showSuccessMessage();
+    }
+
+    // Voeg een eventlistener toe aan het formulier
+    var form = document.getElementById("your-form-id"); // Vervang "your-form-id" door de daadwerkelijke ID van uw formulier
+    form.addEventListener("submit", handleFormSubmission);
+</script>
+</script>
+    </script>
 </body>
+
 </html>
