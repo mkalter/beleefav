@@ -1,0 +1,13 @@
+<SkypeSettings>
+    <UserAccount>
+    	<SkypeSignInAddress>test@test.com</SkypeSignInAddress>
+    	<ExchangeAddress>test@test.com</ExchangeAddress>
+    	<Password>test</Password>
+    </UserAccount>
+	<Theming>
+		<ThemeName>BeleefAV</ThemeName>
+		<CustomBackgroundMainFoRDisplay>main.png</CustomBackgroundMainFoRDisplay> 
+		<CustomBackgroundExtendedFoRDisplay>desk.png</CustomBackgroundExtendedFoRDisplay> 
+		<CustomBackgroundConsole>touch.png</CustomBackgroundConsole> 
+	</Theming>
+</SkypeSettings>
